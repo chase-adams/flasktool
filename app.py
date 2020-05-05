@@ -2586,7 +2586,7 @@ def wftf2():
         # dictionary['AdditionalAssistance']=AdditionalAssistance[counter2]
         # dictionary['TotalFormulaDistrictAA'] = str(round(TotalFormulaDistrictAA[counter2], 3))
         # dictionary['ElemBSL'] = str(round(ELEMBSL[counter2], 3))
-        # dictionary['EHType'] = decoded[d4]['EHType']
+        dictionary['EHType'] = decoded[d4]['EHType']
         # print(type(d4['ESSmallIsolated']))
         dictionary['ESSmallIsolated'] = str(round(decoded[d4]['ESSmallIsolated'], 3))
         dictionary['TotalFormulaDistrictAA'] = str(round(TotalFormulaDistrictAA[counter2], 4))
