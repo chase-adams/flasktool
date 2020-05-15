@@ -2675,6 +2675,12 @@ def wftf2():
         counter2 += 1
         ti=time.time()
     print(ti-gi)
-    return flask.render_template('table2.html', string1=D,g='green',r='red')
+    # return flask.render_template('table2.html', string1=D,g='green',r='red')
+    return flask.jsonify(D)
+
+@app.route('/api/wftf', methods=['POST'])
+def api_wftf():
+    return wftf2()
+
 if __name__ == '__main__':
     app.run()
