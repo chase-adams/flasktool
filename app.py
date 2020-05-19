@@ -2703,7 +2703,7 @@ def wftf2():
         # return flask.render_template('table2.html', string1=D,g='green',r='red')
     return flask.jsonify(D)
 
-@app.route('/api/wholevalues', methods=['GET', 'POST'])
+@app.route('/wholevalues', methods=['GET', 'POST'])
 def wholevalues():
     def alchemyencoder(obj):
         """JSON encoder function for SQLAlchemy special classes."""
