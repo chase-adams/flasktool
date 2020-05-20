@@ -2700,8 +2700,9 @@ def wftf2():
     F['DAA'] = str(sum(DAA.values()))
     print(wholevalues())
     print(ti-gi)
+
         # return flask.render_template('table2.html', string1=D,g='green',r='red')
-    return flask.jsonify(D)
+    return flask.jsonify({ 'districts': D, 'summary': wholevalues() })
 
 @app.route('/api/wftf', methods=['POST'])
 def api_wftf():
@@ -2717,7 +2718,7 @@ def wholevalues():
             return float(obj)
     E.update(F)
     E['sumEqualisationAssistancedifference']=str(round(abs((float(E['sumEqualisationAssistancedefault'])-float(E['sumEqualisationAssistance']))),3))
-    return json.dumps(E, default=alchemyencoder)
+    return E
 
 
 if __name__ == '__main__':
