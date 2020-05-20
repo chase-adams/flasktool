@@ -2,7 +2,6 @@ import flask
 from sqlalchemy import create_engine
 import json
 import os
-import pandas as pd
 import decimal,time, datetime
 class CustomJsonEncoder(json.JSONEncoder):
     def default(self, obj):
