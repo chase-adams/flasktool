@@ -1283,7 +1283,7 @@ def wftf(yearnum,g,Yeardef):
         dictionary['EntityName'] = Ename[counter2]
         # dictionary['schooltype']=str(schooltype[decoded[d4]['EntityID']])
         dictionary['County'] = decoded[d4]['County']
-        #dictionary['AOI'] = str(decoded[d4]['FTFStatus'])
+        dictionary['AOI'] = str(decoded[d4]['FTFStatus'])
         #dictionary['TEI'] = str(round(TEI[counter2], 5))
         dictionary['Type']=str(decoded[d4]['Type'])
         # dictionary['bslbyschooltype'] = str(round(bslbyschooltype[schooltype[decoded[d4]['EntityID']]],2))
@@ -2565,7 +2565,7 @@ def wftf2():
         dictionary['EntityName'] = Ename[counter2]
         # dictionary['schooltype']=str(schooltype[decoded[d4]['EntityID']])
         dictionary['County'] = decoded[d4]['County']
-        #dictionary['AOI'] = str(decoded[d4]['FTFStatus'])
+        dictionary['AOI'] = str(decoded[d4]['FTFStatus'])
         #dictionary['TEI'] = str(round(TEI[counter2], 5))
         dictionary['Type']=str(decoded[d4]['Type'])
         # dictionary['bslbyschooltype'] = str(round(bslbyschooltype[schooltype[decoded[d4]['EntityID']]],2))
