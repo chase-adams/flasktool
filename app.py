@@ -3037,7 +3037,7 @@ def wholevalues():
     E.update(F)
     E['sumEqualisationAssistancedifference'] = str(
         round(abs((float(E['sumEqualisationAssistancedefault']) - float(E['sumEqualisationAssistance']))), 3))
-    return json.dumps(E, default=alchemyencoder)
+    return E
 
 
 if __name__ == '__main__':
