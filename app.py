@@ -1510,7 +1510,7 @@ def wftf(yearnum, g, Yeardef):
             else:
                 DAAdefault[d['EntityID']] = FinalFormulaAdditionalAssistance[counter1]
             FinalAAAllocation.append(FinalFormulaAdditionalAssistance[counter1])
-        AdditionalAssistance[d['EntityID']] = (FinalAAAllocation[counter1])
+        AdditionalAssistance[d['EntityID']] =(AAHS[d['EntityID']] + AAElem[d['EntityID']])
 
         if d['County'] not in aabyCounty:
             aabyCounty[d['County']] = AdditionalAssistance[d['EntityID']]
@@ -1548,11 +1548,11 @@ def wftf(yearnum, g, Yeardef):
         if admbyCounty[i] == 0:
             perpupilbyCounty[i] = 0
         else:
-            perpupilbyCounty[i] = ((bslbyCounty[i] / 3) / (admbyCounty[i]/3))
+            perpupilbyCounty[i] = ((bslbyCounty[i] ) / (admbyCounty[i]))
         if weightedadmbyCounty[i] == 0:
             perpupilbyweightedCounty[i] = 0
         else:
-            perpupilbyweightedCounty[i] = ((bslbyCounty[i] / 3) / (weightedadmbyCounty[i]/3) )
+            perpupilbyweightedCounty[i] = ((bslbyCounty[i] ) / (weightedadmbyCounty[i]) )
     # for i in bslbytype:
     #   if admbytype[i] == 0:
     #      perpupilpertype[i] = 0
@@ -1571,11 +1571,11 @@ def wftf(yearnum, g, Yeardef):
         if admbyCounty[i] == 0:
             perpupilaabyCounty[i] = 0
         else:
-            perpupilaabyCounty[i] = ((aabyCounty[i] / 3) / (admbyCounty[i]/3) )
+            perpupilaabyCounty[i] = ((aabyCounty[i] / 3) / (admbyCounty[i]) )
         if weightedadmbyCounty[i] == 0:
             perpupilaabyweightedCounty[i] = 0
         else:
-            perpupilaabyweightedCounty[i] = ((aabyCounty[i] / 3) / (weightedadmbyCounty[i]/3) )
+            perpupilaabyweightedCounty[i] = ((aabyCounty[i] / 3) / (weightedadmbyCounty[i]) )
 
     # for i in bslbyschooltype:
     #     if admbyschooltype[i] == 0:
@@ -1794,7 +1794,7 @@ def wftf(yearnum, g, Yeardef):
         if weightedadmbyTypeandcounty[i] == 0:
             perpupilEBbyweightedTypeandcounty[i] = 0
         else:
-            perpupilEBbyweightedTypeandcounty[i] = ((EqBasebyTypeandcounty[i] / 3) / (weightedadmbyTypeandcounty[i] / 3))
+            perpupilEBbyweightedTypeandcounty[i] = ((EqBasebyTypeandcounty[i] / 3) / (weightedadmbyTypeandcounty[i] ))
 
     for i in EqBasebyEHTypeandcounty:
         if admbyEHTypeandcounty[i] == 0:
@@ -1804,7 +1804,7 @@ def wftf(yearnum, g, Yeardef):
         if weightedadmbyEHTypeandcounty[i] == 0:
             perpupilEBbyweightedEHTypeandcounty[i] = 0
         else:
-            perpupilEBbyweightedEHTypeandcounty[i] = ((EqBasebyEHTypeandcounty[i] / 3) / (weightedadmbyEHTypeandcounty[i] / 3))
+            perpupilEBbyweightedEHTypeandcounty[i] = ((EqBasebyEHTypeandcounty[i] / 3) / (weightedadmbyEHTypeandcounty[i] ))
 
     for i in EqBasebyEHType:
         if admbyEHType[i] == 0:
@@ -1830,11 +1830,11 @@ def wftf(yearnum, g, Yeardef):
         if admbyCounty[i] == 0:
             perpupilEBbyCounty[i] = 0
         else:
-            perpupilEBbyCounty[i] = ((EqBasebyCounty[i] / 3) / (admbyCounty[i] / 3))
+            perpupilEBbyCounty[i] = ((EqBasebyCounty[i] / 3) / (admbyCounty[i] ))
         if weightedadmbyCounty[i] == 0:
             perpupilEBbyweightedCounty[i] = 0
         else:
-            perpupilEBbyweightedCounty[i] = ((EqBasebyCounty[i] / 3) / (weightedadmbyCounty[i] / 3))
+            perpupilEBbyweightedCounty[i] = ((EqBasebyCounty[i] / 3) / (weightedadmbyCounty[i] ))
 
     for i in MObyType:
         if admbyType[i] == 0:
@@ -3440,11 +3440,11 @@ def wftf2():
         if admbyCounty[i] == 0:
             perpupilbyCounty[i] = 0
         else:
-            perpupilbyCounty[i] = ((bslbyCounty[i] / 3) / (admbyCounty[i]/3) )
+            perpupilbyCounty[i] = ((bslbyCounty[i] ) / (admbyCounty[i]) )
         if weightedadmbyCounty[i] == 0:
             perpupilbyweightedCounty[i] = 0
         else:
-            perpupilbyweightedCounty[i] = ((bslbyCounty[i] / 3) / (weightedadmbyCounty[i]/3) )
+            perpupilbyweightedCounty[i] = ((bslbyCounty[i] ) / (weightedadmbyCounty[i]) )
     # for i in bslbytype:
     #   if admbytype[i]==0:
     #      perpupilpertype[i] =0
@@ -3463,11 +3463,11 @@ def wftf2():
         if admbyCounty[i] == 0:
             perpupilaabyCounty[i] = 0
         else:
-            perpupilaabyCounty[i] = ((AabyCounty[i] / 3) / (admbyCounty[i]/3) )
+            perpupilaabyCounty[i] = ((AabyCounty[i] / 3) / (admbyCounty[i]) )
         if weightedadmbyCounty[i] == 0:
             perpupilaabyweightedCounty[i] = 0
         else:
-            perpupilaabyweightedCounty[i] = ((AabyCounty[i] / 3) / (weightedadmbyCounty[i]/3))
+            perpupilaabyweightedCounty[i] = ((AabyCounty[i] / 3) / (weightedadmbyCounty[i]))
 
     # for i in bslbyschooltype:
     #     if admbyschooltype[i]==0:
@@ -3720,7 +3720,7 @@ def wftf2():
         if weightedadmbyTypeandcounty[i] == 0:
             perpupilEBbyweightedTypeandcounty[i] = 0
         else:
-            perpupilEBbyweightedTypeandcounty[i] = ((EqBasebyTypeandcounty[i] / 3) / (weightedadmbyTypeandcounty[i] / 3))
+            perpupilEBbyweightedTypeandcounty[i] = ((EqBasebyTypeandcounty[i] / 3) / (weightedadmbyTypeandcounty[i] ))
 
     for i in EqBasebyEHTypeandcounty:
         if admbyEHTypeandcounty[i] == 0:
@@ -3730,7 +3730,7 @@ def wftf2():
         if weightedadmbyEHTypeandcounty[i] == 0:
             perpupilEBbyweightedEHTypeandcounty[i] = 0
         else:
-            perpupilEBbyweightedEHTypeandcounty[i] = ((EqBasebyEHTypeandcounty[i] / 3) / (weightedadmbyEHTypeandcounty[i] / 3))
+            perpupilEBbyweightedEHTypeandcounty[i] = ((EqBasebyEHTypeandcounty[i] / 3) / (weightedadmbyEHTypeandcounty[i] ))
 
     for i in EqBasebyType:
         if admbyType[i] == 0:
@@ -3755,11 +3755,11 @@ def wftf2():
         if admbyCounty[i] == 0:
             perpupilEBbyCounty[i] = 0
         else:
-            perpupilEBbyCounty[i] = ((EqBasebyCounty[i] / 3) / (admbyCounty[i] / 3))
+            perpupilEBbyCounty[i] = ((EqBasebyCounty[i] / 3) / (admbyCounty[i] ))
         if weightedadmbyCounty[i] == 0:
             perpupilEBbyweightedCounty[i] = 0
         else:
-            perpupilEBbyweightedCounty[i] = ((EqBasebyCounty[i] / 3) / (weightedadmbyCounty[i] / 3))
+            perpupilEBbyweightedCounty[i] = ((EqBasebyCounty[i] / 3) / (weightedadmbyCounty[i] ))
     for i in MObyType:
         if admbyType[i] == 0:
             perpupilMObyType[i] = 0
