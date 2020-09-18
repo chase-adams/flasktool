@@ -514,6 +514,8 @@ def wftf(yearnum, g, Yeardef):
     sumHSTution = {}
     CAAdefault = {}
     DAAdefault = {}
+    CAA={}
+    DAA={}
     HSRange = {}
     ELEMRange = {}
     TotalStateEqualisationFunding = {}
@@ -1237,29 +1239,29 @@ def wftf(yearnum, g, Yeardef):
             admbyCounty[d['County']] += (PREKADM[counter1] + ELEMADM[counter1] + HSADM[counter1])
 
         if d['County'] not in weightedadmbyCounty:
-            weightedadmbyCounty[d['County']] = (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyCounty[d['County']]=(WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+            # weightedadmbyCounty[d['County']] = (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyCounty[d['County']]=(WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyCounty[d['County']] += (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyCounty[d['County']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+            # weightedadmbyCounty[d['County']] += (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyCounty[d['County']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         if d['Type'] not in weightedadmbyType:
-            weightedadmbyType[d['Type']] = (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyType[d['Type']] = ( WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+            # weightedadmbyType[d['Type']] = (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyType[d['Type']] = ( WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyType[d['Type']] += (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyType[d['Type']] += ( WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+            # weightedadmbyType[d['Type']] += (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyType[d['Type']] += ( WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         if d['EHType'] not in bslbyEHType:
             bslbyEHType[d['EHType']] = BSL[counter1]
         else:
@@ -1269,17 +1271,17 @@ def wftf(yearnum, g, Yeardef):
         else:
             admbyEHType[d['EHType']] += (PREKADM[counter1] + ELEMADM[counter1] + HSADM[counter1])
         if d['EHType'] not in weightedadmbyEHType:
-            weightedadmbyEHType[d['EHType']] = (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyEHType[d['EHType']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+            # weightedadmbyEHType[d['EHType']] = (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyEHType[d['EHType']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyEHType[d['EHType']] += (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyEHType[d['EHType']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+            # weightedadmbyEHType[d['EHType']] += (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyEHType[d['EHType']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         # if schooltype[d['EntityID']] not in bslbyschooltype:
         #     bslbyschooltype[schooltype[d['EntityID']]] = BSL[counter1]
         # else:
@@ -1302,41 +1304,41 @@ def wftf(yearnum, g, Yeardef):
         else:
             admbyTypeandcounty[str(d['Type'] + "-" + d['County'])] += float(sumofadm[d['EntityID']])
         if (str(d['Type'] + "-" + d['County'])) not in weightedadmbyTypeandcounty:
+            # weightedadmbyTypeandcounty[(str(d['Type'] + "-" + d['County']))] = (
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
             weightedadmbyTypeandcounty[(str(d['Type'] + "-" + d['County']))] = (
                         WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
-            #weightedadmbyTypeandcounty[(str(d['Type'] + "-" + d['County']))] = (
-            #            WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-            #            GroupBWeightedAddonCountsweighted[counter1])
+                        GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyTypeandcounty[(str(d['Type'] + "-" + d['County']))] += (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
             # weightedadmbyTypeandcounty[(str(d['Type'] + "-" + d['County']))] += (
-            #            WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-            #            GroupBWeightedAddonCountsweighted[counter1])
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyTypeandcounty[(str(d['Type'] + "-" + d['County']))] += (
+                       WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+                       GroupBWeightedAddonCountsweighted[counter1])
         if (str(d['EHType'] + "-" + d['County'])) not in admbyEHTypeandcounty:
             admbyEHTypeandcounty[str(d['EHType'] + "-" + d['County'])] = float(sumofadm[d['EntityID']])
         else:
             admbyEHTypeandcounty[str(d['EHType'] + "-" + d['County'])] += float(sumofadm[d['EntityID']])
         if (str(d['EHType'] + "-" + d['County'])) not in weightedadmbyEHTypeandcounty:
-            weightedadmbyEHTypeandcounty[(str(d['EHType'] + "-" + d['County']))] = (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
             # weightedadmbyEHTypeandcounty[(str(d['EHType'] + "-" + d['County']))] = (
-            #            WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-            #            GroupBWeightedAddonCountsweighted[counter1])
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyEHTypeandcounty[(str(d['EHType'] + "-" + d['County']))] = (
+                       WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+                       GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyEHTypeandcounty[(str(d['EHType'] + "-" + d['County']))] += (
-                        WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-                        GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
-                    Weighted_GB3_K3[counter1])))
             # weightedadmbyEHTypeandcounty[(str(d['EHType'] + "-" + d['County']))] += (
-            #            WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
-            #            GroupBWeightedAddonCountsweighted[counter1])
+            #             WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+            #             GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(
+            #         Weighted_GB3_K3[counter1])))
+            weightedadmbyEHTypeandcounty[(str(d['EHType'] + "-" + d['County']))] += (
+                       WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +
+                       GroupBWeightedAddonCountsweighted[counter1])
         # calculate by type and schooltype
         # if schooltypeanddistricttype[d['EntityID']] not in bslbyschooltypeanddistricttype:
         #     bslbyschooltypeanddistricttype[schooltypeanddistricttype[d['EntityID']]] = BSL[counter1]
@@ -1506,6 +1508,10 @@ def wftf(yearnum, g, Yeardef):
                 DAAdefault[d['EntityID']] = FinalFormulaAdditionalAssistance[counter1]
             FinalAAAllocation.append(FinalFormulaAdditionalAssistance[counter1])
         AdditionalAssistance[d['EntityID']] =(AAHS[d['EntityID']] + AAElem[d['EntityID']])
+        if d['Type'] == "Charter":
+            CAA[d['EntityID']] = AdditionalAssistance[d['EntityID']]
+        else:
+            DAA[d['EntityID']] = AdditionalAssistance[d['EntityID']]
 
         if d['County'] not in aabyCounty:
             aabyCounty[d['County']] = AdditionalAssistance[d['EntityID']]
@@ -1535,8 +1541,8 @@ def wftf(yearnum, g, Yeardef):
             counter1]
         Sumof9_12WeightedPupilsuser_specifiedSWWreduction[d['EntityID']] += \
             nine_12WeightedPupilsuser_specifiedSWWreduction[counter1]
-        sumofweightedadm[d['EntityID']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
-        #sumofweightedadm[d['EntityID']] +=(WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+        #sumofweightedadm[d['EntityID']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+        sumofweightedadm[d['EntityID']] +=(WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         counter1 += 1
     counter2 = 0
     for i in bslbyCounty:
@@ -2039,8 +2045,8 @@ def wftf(yearnum, g, Yeardef):
     E['sumHSTutiondefault'] = str(round_half_up(sum(sumHSTution.values()), 3))
     E['SumTotalStateFundingEqualiseddefault'] = str(round_half_up(sum(TotalStateFundingEqualised.values()), 3))
     E['NoStateAidDistrictsdefault'] = str((sum(NoStateAidDistrict) / 3))
-    E['CAAdefault'] = str(round_half_up(sum(CAAdefault.values()), 3))
-    E['DAAdefault'] = str(round_half_up(sum(DAAdefault.values()), 3))
+    E['CAAdefault'] = str(round_half_up(sum(CAA.values()), 3))
+    E['DAAdefault'] = str(round_half_up(sum(DAA.values()), 3))
     E['sumEqualisationBasedefault'] = str(round_half_up(sum(EqualisationBase.values()), 3))
     E['sumEqualisationBaseperpupildefault'] = str(round_half_up((sum(EqualisationBase.values()) / (sum(sumofadm.values()))), 3))
     E['sumEqualisationBaseweightedperpupildefault'] = str(round_half_up((sum(EqualisationBase.values()) / (sum(sumofweightedadm.values()))), 3))
@@ -2329,6 +2335,7 @@ def wftf2():
     WeightedElemCounts = []
     WeightedHSCounts = []
     GroupBWeightedAddonCounts = []
+    GroupBWeightedAddonCountsweighted = []
     ElemBaseWeight = []
     HSBaseWeight = {}
     GroupBBSL = []
@@ -3149,11 +3156,13 @@ def wftf2():
         # CALCULATION OF GROUP B BSL
         if (d["FTFStatus"] == '0'):
             GroupBBSL.append((float(LEABaseLevel1[counter1])) * (float(TEI[counter1])) * round_half_up(float(GroupBWeightedAddonCounts[counter1]), 3) * (float(HalfTimeAOI)))
-
+            GroupBWeightedAddonCountsweighted.append(round_half_up( float(GroupBWeightedAddonCounts[counter1]), 3) * (float(HalfTimeAOI)))
         elif (d["FTFStatus"] == '1'):
             GroupBBSL.append((float(LEABaseLevel1[counter1])) * (float(TEI[counter1])) * round_half_up(float(GroupBWeightedAddonCounts[counter1]), 3) * (float(FullTimeAOI)))
+            GroupBWeightedAddonCountsweighted.append(round_half_up(float(GroupBWeightedAddonCounts[counter1]), 3) * (float(FullTimeAOI)))
         else:
             GroupBBSL.append((float(LEABaseLevel1[counter1])) * (float(TEI[counter1])) * round_half_up(float(GroupBWeightedAddonCounts[counter1]), 3))
+            GroupBWeightedAddonCountsweighted.append((float(FullTimeAOI)))
         # CALCULATION OF AuditBaseLevelAdjustment
         if (d["FTFStatus"] == None):
             AuditBaseLevelAdjustment.append(float(d["MaxofBaseAdjsAmount"]))
@@ -3180,21 +3189,21 @@ def wftf2():
         else:
             admbyCounty[d['County']] += (PREKADM[counter1] + ELEMADM[counter1] + HSADM[counter1])
         if d['County'] not in weightedadmbyCounty:
-            weightedadmbyCounty[d['County']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyCounty[d['County']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         else:
-            weightedadmbyCounty[d['County']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyCounty[d['County']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         if str(d['Type'] + "-" + d['County']) not in weightedadmbyTypeandcounty:
-            weightedadmbyTypeandcounty[str(d['Type'] + "-" + d['County'])] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyTypeandcounty[str(d['Type'] + "-" + d['County'])] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyTypeandcounty[str(d['Type'] + "-" + d['County'])] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyTypeandcounty[str(d['Type'] + "-" + d['County'])] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         if str(d['EHType'] + "-" + d['County']) not in weightedadmbyEHTypeandcounty:
-            weightedadmbyEHTypeandcounty[str(d['EHType'] + "-" + d['County'])] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] +GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyEHTypeandcounty[str(d['EHType'] + "-" + d['County'])] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         else:
-            weightedadmbyEHTypeandcounty[str(d['EHType'] + "-" + d['County'])] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyEHTypeandcounty[str(d['EHType'] + "-" + d['County'])] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         if d['Type'] not in weightedadmbyType:
-            weightedadmbyType[d['Type']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyType[d['Type']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         else:
-            weightedadmbyType[d['Type']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyType[d['Type']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         if d['EHType'] not in bslbyEHType:
             bslbyEHType[d['EHType']] = BSL[counter1]
         else:
@@ -3204,9 +3213,9 @@ def wftf2():
         else:
             admbyEHType[d['EHType']] += (PREKADM[counter1] + ELEMADM[counter1] + HSADM[counter1])
         if d['EHType'] not in weightedadmbyEHType:
-            weightedadmbyEHType[d['EHType']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyEHType[d['EHType']] = (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         else:
-            weightedadmbyEHType[d['EHType']] += ( WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+            weightedadmbyEHType[d['EHType']] += ( WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1] )
         # if schooltype[d['EntityID']] not in bslbyschooltype:
         #     bslbyschooltype[schooltype[d['EntityID']]] = BSL[counter1]
         # else:
@@ -3387,20 +3396,20 @@ def wftf2():
                 # AAHS[d['EntityID']]-= float(CharterHSAAReduction[counter1])
                 # AAElem[d['EntityID']]-= float(CharterElemAAReduction[counter1])
                 if Reductionflag=="percent":
-                    AAHS[d['EntityID']] = AAHS[d['EntityID']] * (1 - (CAAReduction / 100))
-                    AAElem[d['EntityID']] = AAElem[d['EntityID']] * (1 - (CAAReduction / 100))
+                    AAHS[d['EntityID']] = AAHS[d['EntityID']] * (1 + (CAAReduction / 100))
+                    AAElem[d['EntityID']] = AAElem[d['EntityID']] * (1 + (CAAReduction / 100))
                 elif Reductionflag=="value":
-                    AAHS[d['EntityID']] = AAHS[d['EntityID']] - (CAAReduction)
-                    AAElem[d['EntityID']] = AAElem[d['EntityID']] - (CAAReduction)
+                    AAHS[d['EntityID']] = AAHS[d['EntityID']] + (CAAReduction)
+                    AAElem[d['EntityID']] = AAElem[d['EntityID']] + (CAAReduction)
             else:
                 # AAHS[d['EntityID']] += float(DistrictHSReduction[counter1])
                 # AAElem[d['EntityID']] += float(DistrictPreKElemReduction[counter1] )
                 if Reductionflag == "percent":
-                    AAHS[d['EntityID']] = AAHS[d['EntityID']] * (1 - (DAAReduction / 100))
-                    AAElem[d['EntityID']] = AAElem[d['EntityID']] * (1 - (DAAReduction / 100))
+                    AAHS[d['EntityID']] = AAHS[d['EntityID']] * (1 + (DAAReduction / 100))
+                    AAElem[d['EntityID']] = AAElem[d['EntityID']] * (1 + (DAAReduction / 100))
                 elif Reductionflag == "value":
-                    AAHS[d['EntityID']] = AAHS[d['EntityID']] - (DAAReduction)
-                    AAElem[d['EntityID']] = AAElem[d['EntityID']] - (DAAReduction)
+                    AAHS[d['EntityID']] = AAHS[d['EntityID']] + (DAAReduction)
+                    AAElem[d['EntityID']] = AAElem[d['EntityID']] + (DAAReduction)
 
                 # AAHS[d['EntityID']] = AAHS[d['EntityID']] * (1 - (DAAReductionpercent / 100))
                 # AAElem[d['EntityID']] = AAElem[d['EntityID']] * (1 - (DAAReductionpercent / 100))
@@ -3449,8 +3458,8 @@ def wftf2():
         Sumofk_8WeightedPupilsuser_specifiedSWWreduction[d['EntityID']] += K_8WeightedPupilsuser_specifiedSWWreduction[
             counter1]
         Sumof9_12WeightedPupilsuser_specifiedSWWreduction[d['EntityID']] += nine_12WeightedPupilsuser_specifiedSWWreduction[counter1]
-        sumofweightedadm[d['EntityID']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
-        # sumofweightedadm[d['EntityID']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
+        #sumofweightedadm[d['EntityID']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCounts[counter1] - (round_half_up(Weighted_GB2_K3Reading[counter1], 3) + round_half_up(Weighted_GB3_K3[counter1])))
+        sumofweightedadm[d['EntityID']] += (WeightedPreKCounts[counter1] + WeightedElemCounts[counter1] + WeightedHSCounts[counter1] + GroupBWeightedAddonCountsweighted[counter1])
         counter1 += 1
     counter2 = 0
 
@@ -3843,80 +3852,80 @@ def wftf2():
         dictionary = {}
         # df=pandas.DataFrame(entitynull)
         # df.to_csv('C:/Users/jjoth/Desktop/asu/EA/entityfile.csv')
-        # dictionary['ElemLLnew'] = str(round_half_up(ElemLLnew[decoded[d4]['EntityID']], 4))
-        # dictionary['HSLLnew'] = str(round_half_up(HSLLnew[decoded[d4]['EntityID']], 4))
-        # dictionary['sumofweightedadm'] = str(round_half_up(sumofweightedadm[decoded[d4]['EntityID']], 4))
-        # dictionary['LEABaseLevel'] = str(round_half_up(LEABaseLevel1[counter2], 4))
-        # dictionary['GroupBWeightedAddonCounts'] = str(round_half_up(GroupBWeightedAddonCounts[counter2], 4))
-        # dictionary['BSLWithoutAdjustment'] = str(round_half_up(BSLWithoutAdjustment[counter2], 4))
-        # dictionary['AuditBaseLevelAdjustment'] = str(round_half_up(AuditBaseLevelAdjustment[counter2], 3))
-        # dictionary['EqualisationAssistanceoriginal'] = str(round_half_up(decoded[d4]['EqualisationAssistanceoriginal'], 2))
-        # dictionary['EqualisationAssistancedefault'] = str(round_half_up(float(Original[counter2]['EqualisationAssistancedefault']), 2))
-        # dictionary['EqualisationAssisElem'] =str(round_half_up(float(Original[counter2]['EqualisationAssisElem']), 2))
-        # dictionary['EqualisationAssisHS'] = str(round_half_up(float(Original[counter2]['EqualisationAssisHS']), 2))
-        # dictionary['GB1_EDMIDSLD'] = str(round_half_up(GB1_EDMIDSLD[counter2], 4))
-        # dictionary['prekadm'] = str(round_half_up(PREKADM[counter2], 4))
-        # dictionary['hsadm'] = str(round_half_up(HSADM[counter2], 4))
-        # dictionary['elemadm'] = str(round_half_up(ELEMADM[counter2], 4))
-        # dictionary['Weighted_GB1_EDMIDSLD'] = str(round_half_up(Weighted_GB1_EDMIDSLD[counter2], 4))
-        # dictionary['Weighted_GB2_K3Reading'] = str(round_half_up(Weighted_GB2_K3Reading[counter2], 4))
-        # dictionary['Weighted_GB3_K3'] = str(round_half_up(Weighted_GB3_K3[counter2], 4))
-        # dictionary['Weighted_'] = str(round_half_up(Weighted_[counter2], 4))
-        # dictionary['Weighted_GB5_OI_R'] = str(round_half_up(Weighted_GB5_OI_R[counter2], 4))
-        # dictionary['Weighted_GB6_PS_D'] = str(round_half_up(Weighted_GB6_PS_D[counter2], 4))
-        # dictionary['Weighted_GB7_MOID'] = str(round_half_up(Weighted_GB7_MOID[counter2], 4))
-        # dictionary['Weighted_GB8_HI'] = str(round_half_up(Weighted_GB8_HI[counter2], 4))
-        # dictionary['Weighted_GB9_VI'] = str(round_half_up(Weighted_GB9_VI[counter2], 4))
-        # dictionary['Weighted_GB10_ED_P'] = str(round_half_up(Weighted_GB10_ED_P[counter2], 4))
-        # dictionary['Weighted_GB11_MDSC'] = str(round_half_up(Weighted_GB11_MDSC[counter2], 4))
-        # dictionary['Weighted_GB12_MD_R'] = str(round_half_up(Weighted_GB12_MD_R[counter2], 4))
-        # dictionary['Weighted_GB13_OI_SC'] = str(round_half_up(Weighted_GB13_OI_SC[counter2], 4))
-        # dictionary['Weighted_GB14_MD_SSI'] = str(round_half_up(Weighted_GB14_MD_SSI[counter2], 4))
-        # dictionary['TEI'] = str(round_half_up(TEI[counter2], 5))
-        # dictionary['WeightedPreKCounts'] = str(round_half_up(WeightedPreKCounts[counter2], 3))
-        # dictionary['WeightedElemCounts'] = str(round_half_up(WeightedElemCounts[counter2], 3))
-        # dictionary['WeightedHSCounts'] = str(round_half_up(WeightedHSCounts[counter2], 3))
-        # dictionary['AAHSNoreduction'] = str(round_half_up(float(Original[counter2]['AAHSNoreduction']), 4))
-        # dictionary['AAElemNoreduction'] = str(round_half_up(float(Original[counter2]['AAElemNoreduction']), 4))
-        # dictionary['GB3_K3'] = str(round_half_up(GB3_K3[counter2], 4))
-        #
-        # dictionary['GB2_K3Reading'] = str(round_half_up(GB2_K3Reading[counter2], 4))
-        # dictionary['GB4_ELL'] = str(round_half_up(GB4_ELL[counter2], 4))
-        # dictionary['GB5_OI_R'] = str(round_half_up(GB5_OI_R[counter2], 4))
-        # dictionary['GB6_PS_D'] = str(round_half_up(GB6_PS_D[counter2], 4))
-        # dictionary['GB7_MOID'] = str(round_half_up(GB7_MOID[counter2], 4))
-        # dictionary['GB8_HI'] = str(round_half_up(GB8_HI[counter2], 4))
-        # dictionary['GB9_VI'] = str(round_half_up(GB9_VI[counter2], 4))
-        # dictionary['GB10_ED_P'] = str(round_half_up(GB10_ED_P[counter2], 4))
-        # dictionary['GB11_MDSC'] = str(round_half_up(GB11_MDSC[counter2], 4))
-        # dictionary['GB12_MD_R'] = str(round_half_up(GB12_MD_R[counter2], 4))
-        # dictionary['GB13_OI_SC'] = str(round_half_up(GB13_OI_SC[counter2], 4))
-        # dictionary['GB14_MD_SSI'] = str(round_half_up(GB14_MD_SSI[counter2], 4))
-        #
-        #
-        # dictionary['SSWHSINCREMENTALWEIGHTPP'] = str(round_half_up(SSWHSINCREMENTALWEIGHTPP[counter2], 4))
-        # dictionary['ELEMRange'] = str((Original[counter2]['ELEMRange']))
-        # dictionary['HSRange'] = str((Original[counter2]['HSRange']))
-        # dictionary['Final_K_8SmWgt'] = str(round_half_up(float(Original[counter2]['Final_K_8SmWgt']), 4))
-        # dictionary['Final_9_12SmWgt'] = str(round_half_up(float(Original[counter2]['Final_9_12SmWgt']), 4))
-        # dictionary['HSBaseWeight'] = str(round_half_up(HSBaseWeight[decoded[d4]['EntityID']], 4))
-        # dictionary['sumhsadm'] = str(round_half_up(sumhsadm[decoded[d4]['EntityID']], 4))
-        # dictionary['NetworkForFundingPurposes']=str(decoded[d4]['NetworkForFundingPurposes'])
-        # dictionary['RCLcalc'] = str(round_half_up(RCL[decoded[d4]['EntityID']], 4))
-        # dictionary['RCLoriginal'] = str(round_half_up(float(Original[counter2]['RCL']), 4))
-        # dictionary['RCLdifference'] = str(
-        #     round_half_up(RCL[decoded[d4]['EntityID']], 4) - round_half_up(float(Original[counter2]['RCL']), 4))
-        # dictionary['TRCL'] = str(round_half_up(TRCL[decoded[d4]['EntityID']], 4))
-        # dictionary['DSLcalc'] = str(round_half_up(DSL[decoded[d4]['EntityID']], 4))
-        # dictionary['DSLoriginal'] = str(round_half_up(float(Original[counter2]['DSL']), 4))
-        # dictionary['DSLdifference'] = str(
-        #     round_half_up(DSL[decoded[d4]['EntityID']], 4) - round_half_up(float(Original[counter2]['DSL']), 4))
-        # dictionary['TSL'] = str(round_half_up(TSL[decoded[d4]['EntityID']], 4))
-        # dictionary['ESSmallIsolated'] = str(round_half_up(decoded[d4]['ESSmallIsolated'], 3))
-        # dictionary['HSSmallIsolated'] = str(round_half_up(decoded[d4]['HSSmallIsolated'], 3))
-        # dictionary['TotalLocalLevycalc'] = str(round_half_up(TotalLocalLevynew[decoded[d4]['EntityID']], 3))
-        # dictionary['TotalLocalLevyoriginal'] = str(round_half_up(float(Original[counter2]['TotalLocalLevy']), 3))
-        # dictionary['TotalLocalLevydifference'] = str(round_half_up(TotalLocalLevynew[decoded[d4]['EntityID']], 3)-round_half_up(float(Original[counter2]['TotalLocalLevy']), 3))
+        dictionary['ElemLLnew'] = str(round_half_up(ElemLLnew[decoded[d4]['EntityID']], 4))
+        dictionary['HSLLnew'] = str(round_half_up(HSLLnew[decoded[d4]['EntityID']], 4))
+        dictionary['sumofweightedadm'] = str(round_half_up(sumofweightedadm[decoded[d4]['EntityID']], 4))
+        dictionary['LEABaseLevel'] = str(round_half_up(LEABaseLevel1[counter2], 4))
+        dictionary['GroupBWeightedAddonCounts'] = str(round_half_up(GroupBWeightedAddonCounts[counter2], 4))
+        dictionary['BSLWithoutAdjustment'] = str(round_half_up(BSLWithoutAdjustment[counter2], 4))
+        dictionary['AuditBaseLevelAdjustment'] = str(round_half_up(AuditBaseLevelAdjustment[counter2], 3))
+        dictionary['EqualisationAssistanceoriginal'] = str(round_half_up(decoded[d4]['EqualisationAssistanceoriginal'], 2))
+        dictionary['EqualisationAssistancedefault'] = str(round_half_up(float(Original[counter2]['EqualisationAssistancedefault']), 2))
+        dictionary['EqualisationAssisElem'] =str(round_half_up(float(Original[counter2]['EqualisationAssisElem']), 2))
+        dictionary['EqualisationAssisHS'] = str(round_half_up(float(Original[counter2]['EqualisationAssisHS']), 2))
+        dictionary['GB1_EDMIDSLD'] = str(round_half_up(GB1_EDMIDSLD[counter2], 4))
+        dictionary['prekadm'] = str(round_half_up(PREKADM[counter2], 4))
+        dictionary['hsadm'] = str(round_half_up(HSADM[counter2], 4))
+        dictionary['elemadm'] = str(round_half_up(ELEMADM[counter2], 4))
+        dictionary['Weighted_GB1_EDMIDSLD'] = str(round_half_up(Weighted_GB1_EDMIDSLD[counter2], 4))
+        dictionary['Weighted_GB2_K3Reading'] = str(round_half_up(Weighted_GB2_K3Reading[counter2], 4))
+        dictionary['Weighted_GB3_K3'] = str(round_half_up(Weighted_GB3_K3[counter2], 4))
+        dictionary['Weighted_'] = str(round_half_up(Weighted_[counter2], 4))
+        dictionary['Weighted_GB5_OI_R'] = str(round_half_up(Weighted_GB5_OI_R[counter2], 4))
+        dictionary['Weighted_GB6_PS_D'] = str(round_half_up(Weighted_GB6_PS_D[counter2], 4))
+        dictionary['Weighted_GB7_MOID'] = str(round_half_up(Weighted_GB7_MOID[counter2], 4))
+        dictionary['Weighted_GB8_HI'] = str(round_half_up(Weighted_GB8_HI[counter2], 4))
+        dictionary['Weighted_GB9_VI'] = str(round_half_up(Weighted_GB9_VI[counter2], 4))
+        dictionary['Weighted_GB10_ED_P'] = str(round_half_up(Weighted_GB10_ED_P[counter2], 4))
+        dictionary['Weighted_GB11_MDSC'] = str(round_half_up(Weighted_GB11_MDSC[counter2], 4))
+        dictionary['Weighted_GB12_MD_R'] = str(round_half_up(Weighted_GB12_MD_R[counter2], 4))
+        dictionary['Weighted_GB13_OI_SC'] = str(round_half_up(Weighted_GB13_OI_SC[counter2], 4))
+        dictionary['Weighted_GB14_MD_SSI'] = str(round_half_up(Weighted_GB14_MD_SSI[counter2], 4))
+        dictionary['TEI'] = str(round_half_up(TEI[counter2], 5))
+        dictionary['WeightedPreKCounts'] = str(round_half_up(WeightedPreKCounts[counter2], 3))
+        dictionary['WeightedElemCounts'] = str(round_half_up(WeightedElemCounts[counter2], 3))
+        dictionary['WeightedHSCounts'] = str(round_half_up(WeightedHSCounts[counter2], 3))
+        dictionary['AAHSNoreduction'] = str(round_half_up(float(Original[counter2]['AAHSNoreduction']), 4))
+        dictionary['AAElemNoreduction'] = str(round_half_up(float(Original[counter2]['AAElemNoreduction']), 4))
+        dictionary['GB3_K3'] = str(round_half_up(GB3_K3[counter2], 4))
+
+        dictionary['GB2_K3Reading'] = str(round_half_up(GB2_K3Reading[counter2], 4))
+        dictionary['GB4_ELL'] = str(round_half_up(GB4_ELL[counter2], 4))
+        dictionary['GB5_OI_R'] = str(round_half_up(GB5_OI_R[counter2], 4))
+        dictionary['GB6_PS_D'] = str(round_half_up(GB6_PS_D[counter2], 4))
+        dictionary['GB7_MOID'] = str(round_half_up(GB7_MOID[counter2], 4))
+        dictionary['GB8_HI'] = str(round_half_up(GB8_HI[counter2], 4))
+        dictionary['GB9_VI'] = str(round_half_up(GB9_VI[counter2], 4))
+        dictionary['GB10_ED_P'] = str(round_half_up(GB10_ED_P[counter2], 4))
+        dictionary['GB11_MDSC'] = str(round_half_up(GB11_MDSC[counter2], 4))
+        dictionary['GB12_MD_R'] = str(round_half_up(GB12_MD_R[counter2], 4))
+        dictionary['GB13_OI_SC'] = str(round_half_up(GB13_OI_SC[counter2], 4))
+        dictionary['GB14_MD_SSI'] = str(round_half_up(GB14_MD_SSI[counter2], 4))
+
+
+        dictionary['SSWHSINCREMENTALWEIGHTPP'] = str(round_half_up(SSWHSINCREMENTALWEIGHTPP[counter2], 4))
+        dictionary['ELEMRange'] = str((Original[counter2]['ELEMRange']))
+        dictionary['HSRange'] = str((Original[counter2]['HSRange']))
+        dictionary['Final_K_8SmWgt'] = str(round_half_up(float(Original[counter2]['Final_K_8SmWgt']), 4))
+        dictionary['Final_9_12SmWgt'] = str(round_half_up(float(Original[counter2]['Final_9_12SmWgt']), 4))
+        dictionary['HSBaseWeight'] = str(round_half_up(HSBaseWeight[decoded[d4]['EntityID']], 4))
+        dictionary['sumhsadm'] = str(round_half_up(sumhsadm[decoded[d4]['EntityID']], 4))
+        dictionary['NetworkForFundingPurposes']=str(decoded[d4]['NetworkForFundingPurposes'])
+        dictionary['RCLcalc'] = str(round_half_up(RCL[decoded[d4]['EntityID']], 4))
+        dictionary['RCLoriginal'] = str(round_half_up(float(Original[counter2]['RCL']), 4))
+        dictionary['RCLdifference'] = str(
+            round_half_up(RCL[decoded[d4]['EntityID']], 4) - round_half_up(float(Original[counter2]['RCL']), 4))
+        dictionary['TRCL'] = str(round_half_up(TRCL[decoded[d4]['EntityID']], 4))
+        dictionary['DSLcalc'] = str(round_half_up(DSL[decoded[d4]['EntityID']], 4))
+        dictionary['DSLoriginal'] = str(round_half_up(float(Original[counter2]['DSL']), 4))
+        dictionary['DSLdifference'] = str(
+            round_half_up(DSL[decoded[d4]['EntityID']], 4) - round_half_up(float(Original[counter2]['DSL']), 4))
+        dictionary['TSL'] = str(round_half_up(TSL[decoded[d4]['EntityID']], 4))
+        dictionary['ESSmallIsolated'] = str(round_half_up(decoded[d4]['ESSmallIsolated'], 3))
+        dictionary['HSSmallIsolated'] = str(round_half_up(decoded[d4]['HSSmallIsolated'], 3))
+        dictionary['TotalLocalLevycalc'] = str(round_half_up(TotalLocalLevynew[decoded[d4]['EntityID']], 3))
+        dictionary['TotalLocalLevyoriginal'] = str(round_half_up(float(Original[counter2]['TotalLocalLevy']), 3))
+        dictionary['TotalLocalLevydifference'] = str(round_half_up(TotalLocalLevynew[decoded[d4]['EntityID']], 3)-round_half_up(float(Original[counter2]['TotalLocalLevy']), 3))
         #
         # dictionary['EqualisationBaseHS'] = str(round_half_up(float(Original[counter2]['EqualisationBaseHS']), 4))
         # dictionary['EqualisationBaseElem'] = str(round_half_up(float(Original[counter2]['EqualisationBaseElem']), 4))
