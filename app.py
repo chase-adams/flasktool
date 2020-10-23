@@ -50,7 +50,7 @@ def input():
     return flask.render_template('input variables.html')
 
 
-@app.route('/year', methods=['GET', 'POST'])
+@app.route('/api/year', methods=['GET', 'POST'])
 def year():
     flask.session['yearnum'] = flask.request.form['yearnum']
     yearnum = int((flask.request.form['yearnum']))
@@ -126,7 +126,9 @@ def year():
     flask.session['elemqtr'] = QTRK_8
     flask.session['hsqtr'] = QTR9_12
 
-    return flask.render_template('input variables.html')
+    return flask.jsonify({ 'totalstudents': flask.session['totalstudents'], 'groupaweighted': flask.session['groupaweighted'], 'groupbweighted': flask.session['groupbweighted'], 'totalweightedstudents': flask.session['totalweightedstudents'] })
+
+    # return flask.render_template('input variables.html')
 
 
 @app.route('/logout', methods=['GET', 'POST'])
